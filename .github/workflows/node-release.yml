@@ -1,0 +1,30 @@
+# Publishes node/ to npm when a tag like node-v0.1.0 is pushed.
+# Needs the repository secret NPM_TOKEN (an npm automation token).
+name: node-release
+
+on:
+  push:
+    tags: ["node-v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: node
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Tag matches package version
+        run: test "node-v$(node -p 'require("./package.json").version')" = "${GITHUB_REF_NAME}"
+      - run: npm ci
+      - run: npm run typecheck && npm test && npm run build
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
