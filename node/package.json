@@ -1,0 +1,34 @@
+{
+  "name": "loyvo",
+  "version": "0.1.0",
+  "description": "Official Loyvo SDK for Node.js: SMS, Loyalty and Wallet cards with one API key.",
+  "keywords": ["loyvo", "sms", "sri lanka", "loyalty", "apple wallet", "google wallet", "pos"],
+  "homepage": "https://loyvo.lk/docs",
+  "repository": { "type": "git", "url": "git+https://github.com/Spemai-Dev/loyvo-sdks.git", "directory": "node" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
