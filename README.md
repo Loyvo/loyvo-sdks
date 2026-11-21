@@ -11,4 +11,4 @@ Get an API key in [app.loyvo.lk](https://app.loyvo.lk) → Settings → API keys
 
 ## Releasing
 
-- **Node:** bump `node/package.json` and `node/src/version.ts`, then push a tag `node-vX.Y.Z`. The release workflow tests, builds and publishes to npm (needs the `NPM_TOKEN` secret).
+- **Node:** bump `node/package.json` and `node/src/version.ts`, then push a tag `node-vX.Y.Z`. The release workflow tests, builds and publishes to npm through npm Trusted Publishing (no token; configured on the package's npm settings).
