@@ -78,7 +78,7 @@ $loyvo->pos->redemptions->confirm(['phone' => '0771234567', 'redemptionId' => $r
 
 Calls that change points are **not retried** after a server or network error, because a retry could award points twice. If one fails that way, check with `$loyvo->pos->resolve()` before trying again.
 
-More: `$loyvo->passes` (wallet cards: `get`, `applePass`, `googleSaveUrl`, `updateBalance`, `void`) and `$loyvo->loyalty` (`getConfig`, `updateConfig`, `listBranches`, `createBranch`, `updateBranch`, `deleteBranch`, `lookupCustomer`, `resendPass`, `deleteCustomer`, `getTransaction`, `updateTransaction`).
+More: `$loyvo->cardTemplates` (your card designs: `list()`, `get()`; use a template's `id` as `cardTemplateId`), `$loyvo->passes` (wallet cards: `get`, `applePass`, `googleSaveUrl`, `updateBalance`, `void`) and `$loyvo->loyalty` (`getConfig`, `updateConfig`, `listBranches`, `createBranch`, `updateBranch`, `deleteBranch`, `lookupCustomer`, `resendPass`, `deleteCustomer`, `getTransaction`, `updateTransaction`).
 
 ## Which key is this?
 

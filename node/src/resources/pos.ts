@@ -1,5 +1,5 @@
 import type { HttpClient } from "../http.js";
-import type { EnrollResult, Pass, RedemptionStarted, ResolveResult, TransactionResult } from "../types.js";
+import type { CardTemplate, EnrollResult, Pass, RedemptionStarted, ResolveResult, TransactionResult } from "../types.js";
 
 /** Identify the customer by phone, or by the barcode scanned from their wallet card. */
 export type Customer = { phone: string; barcodeValue?: never } | { barcodeValue: string; phone?: never };
@@ -99,5 +99,19 @@ export class Passes {
   /** Void the card. */
   void(id: string): Promise<Pass> {
     return this.http.request("POST", `/v1/wallet/passes/${encodeURIComponent(id)}/void`, { retrySafe: true });
+  }
+}
+
+/** The business's loyalty card designs. Pass a template's id as cardTemplateId when enrolling. */
+export class CardTemplates {
+  constructor(private readonly http: HttpClient) {}
+
+  /** Every card template, newest first. Only "PUBLISHED" ones can issue cards. */
+  list(): Promise<CardTemplate[]> {
+    return this.http.request("GET", "/v1/wallet/card-templates");
+  }
+
+  get(id: string): Promise<CardTemplate> {
+    return this.http.request("GET", `/v1/wallet/card-templates/${encodeURIComponent(id)}`);
   }
 }
