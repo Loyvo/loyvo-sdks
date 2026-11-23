@@ -142,6 +142,23 @@ export interface TransactionResult {
   [k: string]: unknown;
 }
 
+export interface CardTemplate {
+  id: string;
+  name: string;
+  /** e.g. "POINTS" or "STAMPS". */
+  type: string;
+  /** "PUBLISHED" templates can issue cards. */
+  status: string;
+  backgroundColor?: string;
+  foregroundColor?: string;
+  labelColor?: string;
+  config?: Record<string, unknown>;
+  locationIds?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+  [k: string]: unknown;
+}
+
 export interface RedemptionStarted {
   redemption_id: string;
   /** Seconds until the PIN expires. */

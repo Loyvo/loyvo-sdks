@@ -4,6 +4,7 @@ namespace Loyvo;
 
 use Loyvo\Http\Client;
 use Loyvo\Resources\Campaigns;
+use Loyvo\Resources\CardTemplates;
 use Loyvo\Resources\Loyalty;
 use Loyvo\Resources\Passes;
 use Loyvo\Resources\Pos;
@@ -31,6 +32,8 @@ final class Loyvo
     public $pos;
     /** @var Passes */
     public $passes;
+    /** @var CardTemplates */
+    public $cardTemplates;
     /** @var Loyalty */
     public $loyalty;
     /** @var Client */
@@ -45,6 +48,7 @@ final class Loyvo
         $this->senderIds = new SenderIds($this->http);
         $this->pos = new Pos($this->http);
         $this->passes = new Passes($this->http);
+        $this->cardTemplates = new CardTemplates($this->http);
         $this->loyalty = new Loyalty($this->http);
     }
 

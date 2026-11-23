@@ -1,6 +1,6 @@
 import { HttpClient, type ClientOptions } from "./http.js";
 import { Loyalty } from "./resources/loyalty.js";
-import { Passes, Pos } from "./resources/pos.js";
+import { CardTemplates, Passes, Pos } from "./resources/pos.js";
 import { Campaigns, getBalance, SenderIds, Sms } from "./resources/sms.js";
 import type { Balance, KeyInfo } from "./types.js";
 
@@ -16,6 +16,7 @@ export class Loyvo {
   readonly senderIds: SenderIds;
   readonly pos: Pos;
   readonly passes: Passes;
+  readonly cardTemplates: CardTemplates;
   readonly loyalty: Loyalty;
   private readonly http: HttpClient;
 
@@ -26,6 +27,7 @@ export class Loyvo {
     this.senderIds = new SenderIds(this.http);
     this.pos = new Pos(this.http);
     this.passes = new Passes(this.http);
+    this.cardTemplates = new CardTemplates(this.http);
     this.loyalty = new Loyalty(this.http);
   }
 

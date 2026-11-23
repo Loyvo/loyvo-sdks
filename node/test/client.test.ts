@@ -95,6 +95,14 @@ describe("requests", () => {
     expect(f.calls[3].method).toBe("DELETE");
   });
 
+  it("lists and gets card templates", async () => {
+    const f = fakeFetch({ body: [{ id: "tpl_1", name: "QUBA Rewards", type: "POINTS", status: "PUBLISHED" }] }, { body: { id: "tpl_1" } });
+    const l = client(f, { apiKey: "lvo_live_x" });
+    expect((await l.cardTemplates.list())[0].name).toBe("QUBA Rewards");
+    await l.cardTemplates.get("tpl_1");
+    expect(f.calls.map((c) => `${c.method} ${c.url.pathname}`)).toEqual(["GET /v1/wallet/card-templates", "GET /v1/wallet/card-templates/tpl_1"]);
+  });
+
   it("uses a custom base URL and LOYVO_API_KEY", async () => {
     process.env.LOYVO_API_KEY = "lvo_live_env";
     const f = fakeFetch({ body: {} });

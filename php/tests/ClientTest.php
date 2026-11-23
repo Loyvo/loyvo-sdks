@@ -159,6 +159,16 @@ final class ClientTest extends TestCase
         $this->assertSame('*/*', $t->calls[5]['headers']['Accept']);
     }
 
+    public function testCardTemplates(): void
+    {
+        $t = new FakeTransport(self::json(200, [['id' => 'tpl_1', 'name' => 'QUBA Rewards', 'type' => 'POINTS', 'status' => 'PUBLISHED']]), self::json(200, ['id' => 'tpl_1']));
+        $l = $this->client($t, ['apiKey' => 'lvo_live_x']);
+        $this->assertSame('QUBA Rewards', $l->cardTemplates->list()[0]['name']);
+        $l->cardTemplates->get('tpl_1');
+        $this->assertSame('https://api.loyvo.lk/v1/wallet/card-templates', $t->calls[0]['url']);
+        $this->assertSame('https://api.loyvo.lk/v1/wallet/card-templates/tpl_1', $t->calls[1]['url']);
+    }
+
     public function testBaseUrlEnvKeyAndMissingKey(): void
     {
         putenv('LOYVO_API_KEY=lvo_live_env');
