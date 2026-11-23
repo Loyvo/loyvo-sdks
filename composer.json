@@ -1,0 +1,32 @@
+{
+    "name": "loyvo/loyvo",
+    "description": "Official Loyvo SDK for PHP: SMS, Loyalty and Wallet cards with one API key.",
+    "type": "library",
+    "keywords": ["loyvo", "sms", "sri lanka", "loyalty", "apple wallet", "google wallet", "pos", "woocommerce"],
+    "homepage": "https://loyvo.lk/docs",
+    "license": "MIT",
+    "support": {
+        "email": "support@loyvo.lk",
+        "docs": "https://loyvo.lk/docs"
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6 || ^10.5 || ^11.5 || ^12.0"
+    },
+    "autoload": {
+        "psr-4": { "Loyvo\\": "php/src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Loyvo\\Tests\\": "php/tests/" }
+    },
+    "scripts": {
+        "test": "phpunit -c php/phpunit.xml"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

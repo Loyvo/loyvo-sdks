@@ -5,3 +5,5 @@ vendor/
 .DS_Store
 .phpunit.cache/
 coverage/
+composer.lock
+.phpunit.result.cache
