@@ -1,6 +1,6 @@
 {
   "name": "loyvo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Official Loyvo SDK for Node.js: SMS, Loyalty and Wallet cards with one API key.",
   "keywords": ["loyvo", "sms", "sri lanka", "loyalty", "apple wallet", "google wallet", "pos"],
   "homepage": "https://loyvo.lk/docs",
