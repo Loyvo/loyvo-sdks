@@ -7,7 +7,9 @@
     "license": "MIT",
     "support": {
         "email": "support@loyvo.lk",
-        "docs": "https://loyvo.lk/docs"
+        "docs": "https://loyvo.lk/docs",
+        "issues": "https://github.com/Loyvo/loyvo-sdks/issues",
+        "source": "https://github.com/Loyvo/loyvo-sdks"
     },
     "require": {
         "php": ">=7.4",
