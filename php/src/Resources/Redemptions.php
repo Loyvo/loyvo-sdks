@@ -29,7 +29,7 @@ final class Redemptions
     /**
      * Confirm with the PIN the customer received; deducts the points.
      * @param array{phone?: string, barcodeValue?: string, redemptionId: string, pin: string} $p
-     * @return array<string, mixed>
+     * @return array<string, mixed> redemption_id, points_redeemed, previous_balance, new_points_balance, discount_applied_amount, pass
      */
     public function confirm(array $p): array
     {

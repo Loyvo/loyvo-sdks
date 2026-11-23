@@ -135,9 +135,16 @@ export interface EnrollResult {
 }
 
 export interface TransactionResult {
-  points_earned: number;
-  points_balance: number;
-  transaction_id: string;
+  transaction_uuid: string;
+  invoice_id: string | null;
+  amount: number;
+  /** Amount after any offer discount. */
+  net_amount?: number;
+  points_awarded: number;
+  previous_balance: number;
+  new_points_balance: number;
+  customer_name: string;
+  offer_redeemed: boolean;
   pass?: Pass;
   [k: string]: unknown;
 }
@@ -156,6 +163,19 @@ export interface CardTemplate {
   locationIds?: string[];
   createdAt?: string;
   updatedAt?: string;
+  [k: string]: unknown;
+}
+
+export interface RedemptionResult {
+  redemption_id: string;
+  customer_name: string;
+  points_redeemed: number;
+  discount_applied_amount: number;
+  previous_balance: number;
+  new_points_balance: number;
+  ledger_reference: string;
+  confirmed_at: string;
+  pass?: Pass;
   [k: string]: unknown;
 }
 

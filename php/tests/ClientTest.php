@@ -109,7 +109,7 @@ final class ClientTest extends TestCase
 
     public function testPosCallsUseTheWalletRoutes(): void
     {
-        $t = new FakeTransport(self::json(200, ['exists' => true]), self::json(201, ['points_earned' => 25]), self::json(200, ['redemption_id' => 'r1']), self::json(200));
+        $t = new FakeTransport(self::json(200, ['exists' => true]), self::json(201, ['points_awarded' => 25]), self::json(200, ['redemption_id' => 'r1']), self::json(200));
         $l = $this->client($t, ['apiKey' => 'lvo_live_x']);
         $l->pos->resolve(['barcodeValue' => 'BC1']);
         $l->pos->transaction(['phone' => '0771234567', 'amount' => 2500, 'invoiceId' => 'INV-1']);

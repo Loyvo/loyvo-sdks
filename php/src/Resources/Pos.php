@@ -54,7 +54,7 @@ final class Pos
     /**
      * Record a purchase: awards points and updates the wallet card.
      * @param array{phone?: string, barcodeValue?: string, amount: float|int, branchId?: int, invoiceId?: string, getOffer?: bool, cardTemplateId?: string} $p
-     * @return array<string, mixed> points_earned, points_balance, transaction_id, pass
+     * @return array<string, mixed> transaction_uuid, points_awarded, previous_balance, new_points_balance, customer_name, invoice_id, pass
      */
     public function transaction(array $p): array
     {
