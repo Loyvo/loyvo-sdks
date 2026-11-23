@@ -68,7 +68,7 @@ const { publicInstallUrl } = await loyvo.pos.enroll({ phone: "0771234567", first
 
 // Award points for a purchase
 const t = await loyvo.pos.transaction({ phone: "0771234567", amount: 2500, invoiceId: "INV-1055" });
-console.log(t.points_earned, t.points_balance);
+console.log(t.points_awarded, t.new_points_balance);
 
 // Redeem: Loyvo texts the customer a PIN, then you confirm it
 const { redemption_id } = await loyvo.pos.redemptions.initiate({ phone: "0771234567", points: 100 });

@@ -69,7 +69,7 @@ $link = $enrolled['publicInstallUrl'];
 
 // Award points for a purchase
 $t = $loyvo->pos->transaction(['phone' => '0771234567', 'amount' => 2500, 'invoiceId' => 'INV-1055']);
-echo $t['points_earned'], ' / ', $t['points_balance'];
+echo $t['points_awarded'], ' / ', $t['new_points_balance'];
 
 // Redeem: Loyvo texts the customer a PIN, then you confirm it
 $r = $loyvo->pos->redemptions->initiate(['phone' => '0771234567', 'points' => 100]);

@@ -64,7 +64,7 @@ describe("requests", () => {
   });
 
   it("maps POS calls to the wallet routes", async () => {
-    const f = fakeFetch({ body: { exists: true } }, { status: 201, body: { points_earned: 25 } }, { body: { redemption_id: "r1" } }, { body: {} });
+    const f = fakeFetch({ body: { exists: true } }, { status: 201, body: { points_awarded: 25 } }, { body: { redemption_id: "r1" } }, { body: {} });
     const l = client(f, { apiKey: "lvo_live_x" });
     await l.pos.resolve({ barcodeValue: "BC1" });
     await l.pos.transaction({ phone: "0771234567", amount: 2500, invoiceId: "INV-1" });

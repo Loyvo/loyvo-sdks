@@ -1,5 +1,5 @@
 import type { HttpClient } from "../http.js";
-import type { CardTemplate, EnrollResult, Pass, RedemptionStarted, ResolveResult, TransactionResult } from "../types.js";
+import type { CardTemplate, EnrollResult, Pass, RedemptionResult, RedemptionStarted, ResolveResult, TransactionResult } from "../types.js";
 
 /** Identify the customer by phone, or by the barcode scanned from their wallet card. */
 export type Customer = { phone: string; barcodeValue?: never } | { barcodeValue: string; phone?: never };
@@ -58,7 +58,7 @@ export class Redemptions {
   }
 
   /** Confirm with the PIN the customer received. Deducts the points. */
-  confirm(p: Customer & { redemptionId: string; pin: string }): Promise<TransactionResult & { pass?: Pass }> {
+  confirm(p: Customer & { redemptionId: string; pin: string }): Promise<RedemptionResult> {
     return this.http.request("POST", "/v1/wallet/pos/redemptions/confirm", { body: { ...who(p), redemptionId: p.redemptionId, pin: p.pin } });
   }
 
